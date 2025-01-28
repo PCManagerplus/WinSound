@@ -1,12 +1,154 @@
-<html webcrx=""><head>
-  <style>body,html,iframe{margin:0;padding:0;height:100%;width:100%;overflow:hidden}.forceIosScrolling{overflow:scroll;-webkit-overflow-scrolling:touch}</style>
-<script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.ja.fXHYWE2B2YY.O/m=gapi_rpc/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-RiyPXA73ZeSfE6Coy0lFlG2IK-A/cb=gapi.loaded_0?le=scs" async=""></script><script src="https://apis.google.com/js/api.js?checkCookie=1" gapi_processed="true"></script></head>
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windowsサウンドの歴史プレーヤー</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px; /* タイトルが隠れないように調整 */
+    }
+    /* ボタンとプレイヤーの間隔を調整 */
+    .player-container {
+      margin-top: 30px;
+    }
+  </style>
+</head>
 <body>
-<iframe id="innerFrame" name="innerFrame" sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-storage-access-by-user-activation" frameborder="0" allowfullscreen="" src="https://248953080-atari-embeds.googleusercontent.com/embeds/16cb204cf3a9d4d223a0a3fd8b0eec5d/inner-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.ja.fXHYWE2B2YY.O%2Fd%3D1%2Frs%3DAHpOoo-RiyPXA73ZeSfE6Coy0lFlG2IK-A%2Fm%3D__features__" style="overflow: auto;">
-</iframe>
+  <h1>Windowsサウンドの歴史プレーヤー</h1>
 
-<script>function loadGapi(){var loaderScript=document.createElement('script');loaderScript.setAttribute('src','https://apis.google.com/js/api.js?checkCookie=1');loaderScript.onload=function(){this.onload=function(){};loadGapiClient();};loaderScript.onreadystatechange=function(){if(this.readyState==='complete'){this.onload();}};(document.head||document.body||document.documentElement).appendChild(loaderScript);}function updateInnerFrame(url,enableInteraction,forceIosScrolling){var urlEl=document.createElement('a');urlEl.setAttribute('href',url);if(urlEl.protocol!="https:"&&urlEl.protocol!="http:"){return;}var iframe=document.getElementById('innerFrame');iframe.src=url;iframe.onload=function(){gapi.rpc.call('..','innerFrameLoaded');};if(enableInteraction){if(forceIosScrolling){var iframeParent=iframe.parentElement;iframeParent.classList.add('forceIosScrolling');}else{iframe.style.overflow='auto';}}else{iframe.style.pointerEvents='none';}}function updateInnerIframeCode(userCode,enableInteraction,forceIosScrolling){gapi.rpc.setup('innerFrame');gapi.rpc.call('innerFrame','updateUserHtmlFrame',undefined,userCode,enableInteraction,forceIosScrolling);}function onPostMessage(ev){if(ev.data['magic']!='SHIC'){return;}var type=ev.data['type'];switch(type){case'resize':var height=ev.data['height'];gapi.rpc.call('..','resize',undefined,height);}}function onGapiInitialized(){gapi.rpc.call('..','gapiInitialized');gapi.rpc.register('updateInnerFrame',updateInnerFrame);gapi.rpc.register('updateInnerIframeCode',updateInnerIframeCode);window.addEventListener('message',onPostMessage);}function loadGapiClient(){gapi.load('gapi.rpc',onGapiInitialized);}if(document.readyState=='complete'){loadGapi();}else{self.addEventListener('load',loadGapi);}</script>
+  <div class="container player-container">
+    <div class="input-field col s6 offset-s3"> <!-- Materialize CSS のクラスを使用 -->
+      <select id="soundSelector" onchange="playSelectedSound()">
+        <option value="" disabled selected>サウンドを選択</option>
+        <option value="https://windowssound.up.seesaa.net/nt/The20Microsoft20Sound.wav">Windows NT4.0(The Microsoft Sound)</option>
+        <option value="https://windowssound.up.seesaa.net/nt/logon.wav">Windows NT4.0(ログオン)</option>
+        <option value="https://windowssound.up.seesaa.net/nt/logoff.wav">Windows NT4.0(ログオフ)</option>
+        <option value="https://windowssound.up.seesaa.net/95/junglewi.wav">Windows 95(ジャングル 起動)</option>
+        <option value="https://windowssound.up.seesaa.net/95/jungle~1.wav">Windows 95(ジャングル 終了)</option>
+        <option value="https://windowssound.up.seesaa.net/95/musicawi.wav">Windows 95(ミュージカ 起動)</option>
+        <option value="https://windowssound.up.seesaa.net/95/musica~1.wav">Windows 95(ミュージカ 終了)</option>
+        <option value="https://windowssound.up.seesaa.net/95/robotzwi.wav">Windows 95(ロボット 起動)</option>
+        <option value="https://windowssound.up.seesaa.net/95/robotz~1.wav">Windows 95(ロボット 終了)</option>
+        <option value="https://windowssound.up.seesaa.net/95/utopiawi.wav">Windows 95(ユートピア 起動)</option>
+        <option value="https://windowssound.up.seesaa.net/95/utopia~1.wav">Windows 95(ユートピア 終了)</option>
+        <option value="https://windowssound.up.seesaa.net/2k/logon.wav">Windows 2000(ログオン)</option>
+        <option value="https://windowssound.up.seesaa.net/2k/logoff.wav">Windows 2000(ログオフ)</option>
+        <option value="https://windowssound.up.seesaa.net/xp/Windows20XP20Startup.wav">Windows XP(スタートアップ)</option>
+        <option value="https://windowssound.up.seesaa.net/xp/Windows20XP20Shutdown.wav">Windows XP(シャットダウン)</option>
+        <option value="https://windowssound.up.seesaa.net/xp/Windows20XP20Logon20Sound.wav">Windows XP(ログオン)</option>
+        <option value="https://windowssound.up.seesaa.net/xp/Windows20XP20Logoff20Sound.wav">Windows XP(ログオフ)</option>
+        <option value="https://github.com/PCManagerplus/media.web/raw/main/title.mp3">Windows XP(セットアップ時に)</option>
+        <option value="https://github.com/PCManagerplus/media.web/raw/main/Windows%20XP/XP/Windows%20XP/01%20Windows%20XP%20Tour%20intro.mp3">Windows XP(チュートリアル1)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/02%20Windows%20XP%20Tour%201.mp3">Windows XP(チュートリアル2)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/03%20Windows%20XP%20Tour%202.mp3">Windows XP(チュートリアル3)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/04%20Windows%20XP%20Tour%203.mp3">Windows XP(チュートリアル4)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/05%20Windows%20XP%20Tour%205.mp3">Windows XP(チュートリアル5)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/07%20Windows%20XP%20Tour%206.mp3">Windows XP(チュートリアル6)</option>
+        <option value="https://windowssound.up.seesaa.net/vista/Startup.wav">Windows Vistaと7(スタートアップ)</option>
+        <option value="https://windowssound.up.seesaa.net/vista/Shutdown.wav">Windows Vistaと7(シャットダウン)</option>
+        <option value="https://windowssound.up.seesaa.net/vista/Logon.wav">Windows Vistaと7(ログオン)</option>
+        <option value="https://windowssound.up.seesaa.net/vista/Logoff.wav">Windows Vistaと7(ログオフ)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows10/Windows%20Notify%20System%20Generic.wav">Windows 10(システム通知)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows11%20sounds%20all/PowerOn.wav">Windows 11(起動)</option>
+        <option value="https://pcmanagerplus.github.io/media.web/Windows11%20sounds%20all/Windows%20Notify%20System%20Generic.wav">Windows 11(システム通知)</option>
+      </select>
+      <label>サウンドを選択</label> <!-- 追加 -->
+    </div>
+  </div>
 
+  <div class="container player-container">
+    <div class="col s6 offset-s3"> <!-- Materialize CSS のクラスを使用 -->
+      <a class="waves-effect waves-light btn-large modal-trigger" href="#downloadModal">ダウンロードリンクと詳細</a> <!-- Materialize CSS のボタンクラスを使用 -->
+    </div>
+  </div>
 
-</body></html>
+  <div class="container player-container">
+    <audio id="audioPlayer" controls>
+      <source src="" type="audio/mpeg">
+      ブラウザがオーディオ要素をサポートしていません。
+    </audio>
+  </div>
+
+  <!-- モーダルの内容 -->
+  <div id="downloadModal" class="modal">
+    <div class="modal-content">
+      <h4>詳細とダウンロード方法</h4>
+      <p>詳細:Windowsの起動、シャットダウンのサウンドを聞けます。ただし、Windows XP(セットアップ時に)とWindows11(起動)は形式が違うため、リンクはGitHubを利用しますので以下のをクリックダウンロードしてください。</p>
+      <a href="https://github.com/PCManagerplus/media.web/raw/main/Windows11%20sounds%20all/PowerOn.wav" target="_blank">クリックして、Windows 11(起動)をダウンロード</a>
+      <p></p>
+      <a href="https://github.com/PCManagerplus/media.web/raw/main/title.mp3" target="_blank">クリックして、Windows XP(セットアップ時に)をダウンロード</a>
+      <p>ダウンロード方法は、<a href="http://windowssound.seesaa.net/" target="_blank">こちら</a>のアーカイブに残されています。 (NT 4.0 から Windows 7 まで)</p>
+      <p>ダウンロードリンク</p>
+      <a href="https://windowssound.up.seesaa.net/nt/The20Microsoft20Sound.wav" target="_blank">Windows NT4.0(The Microsoft Sound)</a><br>
+      <a href="https://windowssound.up.seesaa.net/nt/logon.wav" target="_blank">Windows NT4.0(ログオン)</a><br>
+      <a href="https://windowssound.up.seesaa.net/nt/logoff.wav" target="_blank">Windows NT4.0(ログオフ)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/junglewi.wav" target="_blank">Windows 95(ジャングル 起動)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/jungle~1.wav" target="_blank">Windows 95(ジャングル 終了)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/musicawi.wav" target="_blank">Windows 95(ミュージカ 起動)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/musica~1.wav" target="_blank">Windows 95(ミュージカ 終了)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/robotzwi.wav" target="_blank">Windows 95(ロボット 起動)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/robotz~1.wav" target="_blank">Windows 95(ロボット 終了)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/utopiawi.wav" target="_blank">Windows 95(ユートピア 起動)</a><br>
+      <a href="https://windowssound.up.seesaa.net/95/utopia~1.wav" target="_blank">Windows 95(ユートピア 終了)</a><br>
+      <a href="https://windowssound.up.seesaa.net/2k/logon.wav" target="_blank">Windows 2000(ログオン)</a><br>
+      <a href="https://windowssound.up.seesaa.net/2k/logoff.wav" target="_blank">Windows 2000(ログオフ)</a><br>
+      <a href="https://windowssound.up.seesaa.net/xp/Windows20XP20Startup.wav" target="_blank">Windows XP(スタートアップ)</a><br>
+      <a href="https://windowssound.up.seesaa.net/xp/Windows20XP20Shutdown.wav" target="_blank">Windows XP(シャットダウン)</a><br>
+      <a href="https://windowssound.up.seesaa.net/xp/Windows20XP20Logon20Sound.wav" target="_blank">Windows XP(ログオン)</a><br>
+      <a href="https://windowssound.up.seesaa.net/xp/Windows20XP20Logoff20Sound.wav" target="_blank">Windows XP(ログオフ)</a><br>
+      <a href="https://github.com/PCManagerplus/media.web/raw/main/title.mp3" target="_blank">Windows XP(セットアップ時に)</a><br>
+      <a href="https://github.com/PCManagerplus/media.web/raw/main/Windows%20XP/XP/Windows%20XP/01%20Windows%20XP%20Tour%20intro.mp3" target="_blank">Windows XP(チュートリアル1)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/02%20Windows%20XP%20Tour%201.mp3" target="_blank">Windows XP(チュートリアル2)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/03%20Windows%20XP%20Tour%202.mp3" target="_blank">Windows XP(チュートリアル3)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/04%20Windows%20XP%20Tour%203.mp3" target="_blank">Windows XP(チュートリアル4)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/05%20Windows%20XP%20Tour%205.mp3" target="_blank">Windows XP(チュートリアル5)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows%20XP/XP/Windows%20XP/07%20Windows%20XP%20Tour%206.mp3" target="_blank">Windows XP(チュートリアル6)</a><br>
+      <a href="https://windowssound.up.seesaa.net/vista/Startup.wav" target="_blank">Windows Vistaと7(スタートアップ)</a><br>
+      <a href="https://windowssound.up.seesaa.net/vista/Shutdown.wav" target="_blank">Windows Vistaと7(シャットダウン)</a><br>
+      <a href="https://windowssound.up.seesaa.net/vista/Logon.wav" target="_blank">Windows Vistaと7(ログオン)</a><br>
+      <a href="https://windowssound.up.seesaa.net/vista/Logoff.wav" target="_blank">Windows Vistaと7(ログオフ)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows10/Windows%20Notify%20System%20Generic.wav" target="_blank">Windows 10(システム通知)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows11%20sounds%20all/PowerOn.wav" target="_blank">Windows 11(起動)</a><br>
+      <a href="https://pcmanagerplus.github.io/media.web/Windows11%20sounds%20all/Windows%20Notify%20System%20Generic.wav" target="_blank">Windows 11(システム通知)</a>
+      <p>上のリンクをクリックで新しいタブで音源を再生できます。音源はダウンロード可能です。ダウンロード方法は、HPのヘルプの<a href="https://sites.google.com/view/sou-official-japanese-help/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB/%E9%9F%B3%E6%A5%BD%E5%8B%95%E7%94%BB/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95" target="_blank">ダウンロードする方法</a>にアクセスしてください。</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">閉じる</a>
+    </div>
+  </div>
+
+  <!-- Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    // プルダウンメニューから選択されたサウンドを再生する関数
+    function playSelectedSound() {
+      var selector = document.getElementById("soundSelector");
+      var selectedSound = selector.value;
+      var audioPlayer = document.getElementById("audioPlayer");
+      audioPlayer.src = selectedSound;
+      audioPlayer.play();
+    }
+
+    // モーダルを初期化
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, {});
+      var selectInstances = M.FormSelect.init(document.querySelectorAll('select'));
+
+      // 閉じるボタンをクリックしたときの処理
+      var closeButton = document.querySelector('.modal-close');
+      closeButton.addEventListener('click', function(event) {
+        event.preventDefault(); // リンク移動を無効にする
+        var modalInstance = M.Modal.getInstance(document.getElementById('downloadModal'));
+        modalInstance.close(); // モーダルを閉じる
+      });
+    });
+  </script>
+</body>
+</html>
